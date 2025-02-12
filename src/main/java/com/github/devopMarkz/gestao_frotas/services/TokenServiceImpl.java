@@ -42,4 +42,17 @@ public class TokenServiceImpl {
         }
     }
 
+    public String validarToken(String token){
+        try {
+            Algorithm algorithm = Algorithm.HMAC256("secret");
+            return JWT.require(algorithm)
+                    .withIssuer("gestao_frota-api")
+                    .build()
+                    .verify(token)
+                    .getSubject();
+        } catch (JWTCreationException e){
+            throw new IllegalArgumentException("Token inválido.");
+        }
+    }
+
 }
