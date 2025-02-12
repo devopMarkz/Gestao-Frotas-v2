@@ -1,9 +1,16 @@
 package com.github.devopMarkz.gestao_frotas.dtos.usuario;
 
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "tipoUsuario", visible = true)
+@JsonSubTypes({
+        @JsonSubTypes.Type(value = CreateMotoristaDTO.class, name = "MOTORISTA"),
+        @JsonSubTypes.Type(value = CreateUsuarioDTO.class, name = "ADMINISTRADOR")
+})
 public class CreateUsuarioDTO {
 
     @Email(message = "Formato de e-mail inválido.")
