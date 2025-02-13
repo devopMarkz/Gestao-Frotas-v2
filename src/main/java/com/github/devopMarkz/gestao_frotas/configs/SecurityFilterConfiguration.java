@@ -31,6 +31,15 @@ public class SecurityFilterConfiguration {
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> {
                     auth.requestMatchers(HttpMethod.POST, "/usuarios/cadastro", "/auth/login").permitAll();
+                    auth.requestMatchers(
+                            "/v2/api-docs/**",
+                            "/v3/api-docs/**",
+                            "/swagger-resources/**",
+                            "/swagger-ui.html",
+                            "/swagger-ui/**",
+                            "/webjars/**",
+                            "/actuator/**"
+                    ).permitAll();
                     auth.anyRequest().authenticated();
                 })
                 .addFilterBefore(authenticationJwtFilter, UsernamePasswordAuthenticationFilter.class)
