@@ -8,8 +8,8 @@ import jakarta.validation.constraints.Size;
 
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "tipoUsuario", visible = true)
 @JsonSubTypes({
-        @JsonSubTypes.Type(value = CreateMotoristaDTO.class, name = "MOTORISTA"),
-        @JsonSubTypes.Type(value = CreateUsuarioDTO.class, name = "ADMINISTRADOR")
+        @JsonSubTypes.Type(value = CreateMotoristaDTO.class, name = "ROLE_MOTORISTA"),
+        @JsonSubTypes.Type(value = CreateUsuarioDTO.class, name = "ROLE_ADMINISTRADOR")
 })
 public class CreateUsuarioDTO {
 

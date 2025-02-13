@@ -4,6 +4,7 @@ import com.github.devopMarkz.gestao_frotas.dtos.usuario.CreateUsuarioDTO;
 import com.github.devopMarkz.gestao_frotas.dtos.usuario.UsuarioRespostaDTO;
 import com.github.devopMarkz.gestao_frotas.services.UsuarioServiceImpl;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -27,6 +28,7 @@ public class UsuarioController {
     }
 
     @GetMapping("/test")
+    @PreAuthorize("hasRole('ADMINISTRADOR')")
     public String test(){
         return "OK";
     }

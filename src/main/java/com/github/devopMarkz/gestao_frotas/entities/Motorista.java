@@ -26,8 +26,8 @@ public class Motorista extends Usuario {
 
     public Motorista() {}
 
-    public Motorista(Long id, String email, String senha, String nome, String cnh, CategoriaCNH categoriaCNH, LocalDate dataNascimento) {
-        super(id, email, senha, TipoUsuario.MOTORISTA);
+    public Motorista(Long id, String email, String senha, TipoUsuario tipoUsuario, String nome, String cnh, CategoriaCNH categoriaCNH, LocalDate dataNascimento) {
+        super(id, email, senha, tipoUsuario);
         this.nome = nome;
         this.cnh = cnh;
         this.categoriaCNH = categoriaCNH;
